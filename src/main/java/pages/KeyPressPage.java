@@ -11,16 +11,21 @@ public class KeyPressPage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
     //=====================================================
     @FindBy(id = "my_field")
-    private WebElement textField;
+        private WebElement textField;
     public void typeInTheTextField(String text) {
-        textField.sendKeys(text);
+            textField.sendKeys(text);
     }
-        public void typeInShiftKey () {
+    public void typeInCtrlKey () {
             textField.click();
             Actions action = new Actions(driver);
-            action.keyDown(Keys.SHIFT).perform();
+            action.keyDown(Keys.CONTROL).perform();
         }
+
+    public void typeInAltKey() {
+        textField.click();
+        Actions action = new Actions (driver);
+        action.keyDown(Keys.ALT).perform();
     }
+}
