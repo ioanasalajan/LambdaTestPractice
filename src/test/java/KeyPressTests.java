@@ -14,7 +14,6 @@ public class KeyPressTests extends BasePage {
         super.setUp();
         keyPressPage = new KeyPressPage(driver);
     }
-
     @Description("Write a letter and check the result")
     @Test
     public void writeALetterAndCheckTheResult() {

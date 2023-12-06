@@ -8,29 +8,24 @@ import org.testng.annotations.BeforeClass;
 public class BasePage {
     public static WebDriver driver;
     private String BASE_URL = "https://www.lambdatest.com/selenium-playground/";
-
     public BasePage() {
         // Default constructor
     }
-
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
-
     @BeforeClass
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize(); // face fullscreen la pag de chrome
+        driver.manage().window().maximize();        // face fullscreen la pag de chrome
         driver.get(BASE_URL);
     }
-
-   /*   @AfterClass //folosim @AfterClass daca vrem
-    //sa inchidem browserul dupa fiecare test case in parte
+    /*   @AfterClass //folosim @AfterClass daca vrem
+    // sa inchidem browserul dupa fiecare test case in parte
     public void tearDown() {
-        driver.quit();
+        driver.quit();   ??????????????????? recording lab 14 42:00
          }      */
-
         @AfterMethod //folosim @AfterMethod daca vrem
     // sa inchidem browserul dupa fiecare test case in parte
     public void tearDown() {
