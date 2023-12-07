@@ -4,6 +4,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.CheckboxPage;
+import org.openqa.selenium.*;
+import org.testng.*;
+import org.testng.annotations.*;
 public class CheckboxPageTests extends BasePage {
     private CheckboxPage checkboxPage;
     @BeforeMethod
@@ -11,6 +14,7 @@ public class CheckboxPageTests extends BasePage {
         super.setUp();
         checkboxPage=new CheckboxPage(driver);
     }
+    /*//Exercitiu Curs online 18......................ramane tema:
     @Test()
     public void clickOnTheSingleCheckboxCheckmark(){
         driver.findElement(By.linkText("Checkbox Demo")).click();
@@ -33,6 +37,30 @@ public class CheckboxPageTests extends BasePage {
         String actualResult=driver.findElement(By.cssSelector("input[value=\"Uncheck All\"]")).getAccessibleName();
         System.out.println(actualResult);
         Assert.assertTrue(actualResult.contains("Uncheck All"));
+    }*/
+
+
+    //TEMA Lab 18:
+    @Test()
+    public void clickOnTheSingleCheckboxCheckmark(){
+        driver.findElement(By.linkText("Checkbox Demo")).click();
+        checkboxPage.clickOnSingleCheckbox();
+
+        String actualResult = driver.findElement(By.cssSelector("#txtAge")).getText();
+        Assert.assertTrue(actualResult.contains("Checked"));
+        checkboxPage.clickOnSingleCheckbox();
+
+        String actualResult2 = driver.findElement(By.cssSelector("#txtAge")).getText();
+        Assert.assertFalse(actualResult2.contains("Checked"));
     }
 
+    @Test
+    public void clickOnTheCheckAllButton(){
+        driver.findElement(By.linkText("Checkbox Demo")).click();
+        checkboxPage.clickOnTheCheckAllButton();
+
+        String actualResult = driver.findElement(By.cssSelector("input[value=\"Uncheck All\"]")).getAccessibleName();
+        System.out.println(actualResult);
+        Assert.assertTrue(actualResult.contains("Uncheck All"));
+    }
 }
